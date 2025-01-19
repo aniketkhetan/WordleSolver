@@ -8,15 +8,17 @@ nltk.download("words")
 word_list = [word.lower() for word in words.words() if len(word) == 5]
 
 
+
 # Choose a random word from the list
-target_word = random.choice(word_list)
-#target_word = 'prose'
+target_word = random.choice([word.lower() for word in word_list if any(word[i] == word[i+1] for i in range(len(word) - 1))])
+target_word = 'masse'
 
 def wordle_solver(word_list, target_word, max_attempts=6):
     epsilon = 0.3
     rewards = {word: 0 for word in word_list}  
     target_word = target_word.lower()
     print(f"\n\n The Target word to guess: {target_word}\n\n\n")
+
     
     for attempt in range(1, max_attempts + 1):
         #epislon greedy
@@ -42,13 +44,14 @@ def wordle_solver(word_list, target_word, max_attempts=6):
         # Check if the word was guessed correctly
         if guess == target_word:
             print(f"\nWord guessed successfully in {attempt} attempts! \n")
-            return
+            return True, attempt
         # Check if there are any words remaining
         if not word_list:
             print("\nNo words remaining! The solver failed. \n")
-            return
+            return False, attempt
     # Failed to guess the word
     print("\nFailed to guess the word within the maximum attempts. \n")
+    return False, attempt
 
 
 def get_feedback(guess, target):
