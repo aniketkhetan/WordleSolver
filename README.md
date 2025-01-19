@@ -2,6 +2,8 @@
 
 This project is a **Streamlit-based Wordle game** that allows users to play the popular word-guessing game while also competing against a simple algorithm. The UI not only lets you guess the target word within six attempts but also shows how the algorithm approached the same puzzle.  
 
+Note: If you're here from my medium article about solving worlde using MABs, the file referenced in the article is in this repository with the name "wordle.py"
+
 **Can you guess smarter and faster than the algorithm? Try it out and find out!**
 
 ---
@@ -40,6 +42,16 @@ The algorithm mimics human-like exploration and exploitation strategies:
 
 ---
 ## Try it out your self
+
+### Streamlit link
+https://wordleversus.streamlit.app
+
+### Run Locally
+
+Clone this repository and download dependancies using requirements.txt file
+Next open terminal or command line in the same directory as the file and run:
+
+streamlit run wordle_ui.py
 
 
 
